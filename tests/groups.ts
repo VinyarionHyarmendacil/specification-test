@@ -149,6 +149,8 @@ test.serial(testOperation, "deleteGroupInvite", () => ({
 	statusCode: 200
 }));
 
+/*
+// Moved to ./groups_deleteGroup.ts to allow for group-dependent operations in other categories
 test.serial(testOperation, "deleteGroup", () => ({
 	parameters: {
 		groupId: state.get("groupId")
@@ -156,3 +158,4 @@ test.serial(testOperation, "deleteGroup", () => ({
 	statusCode: 200,
 	unstable: unstableGroupKeys
 }));
+*/

@@ -50,7 +50,7 @@ test(
 	}
 );
 
-test(
+test.serial(
 	"by id",
 	testOperation,
 	"getWorld",
@@ -68,6 +68,28 @@ test(
 			"Should have the correct world id"
 		);
 		state.set("blackcat-world", t.context.body);
+	}
+);
+
+test.serial(
+	"first listed instance",
+	testOperation,
+	"getWorldInstance",
+	() -> ({
+		parameters: {
+			worldId: blackCatWorldId,
+			instanceId: state.set("blackcat-world").instances[0][0]
+		},
+		statusCode: 200,
+		unstable: true
+	}),
+	(t) => {
+		t.is(
+			t.context.body.worldId,
+			blackCatWorldId,
+			"Should have the correct world id"
+		);
+		state.set("blackcat-first-instance", t.context.body);
 	}
 );
 
